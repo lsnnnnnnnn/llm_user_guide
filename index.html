@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#162235">
+  <meta name="description" content="尚宸智能体知识库用户指南：知识库问答、行情、Quant、财报与基本面能力和使用边界。">
+  <title>尚宸智能体知识库｜用户指南</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#start" aria-label="返回用户指南开头">
+      <span class="brand-mark" aria-hidden="true">SC</span>
+      <span><strong>尚宸智能体知识库</strong><small>USER GUIDE</small></span>
+    </a>
+    <nav aria-label="顶部导航">
+      <a href="#start">开始使用</a>
+      <a href="#capabilities">能力总览</a>
+      <a href="#examples">提问示例</a>
+      <a href="#boundaries">能力边界</a>
+    </nav>
+    <button class="menu-button" type="button" aria-label="打开章节目录" aria-expanded="false">目录</button>
+  </header>
+
+  <aside class="sidebar" aria-label="章节目录">
+    <div class="sidebar-intro">
+      <strong>使用手册</strong>
+      <span>面向公司同事 · 2026-09-17</span>
+    </div>
+    <section>
+      <p>快速开始</p>
+      <a href="#start">两种提问方式</a>
+      <a href="#prompt-formula">推荐提问公式</a>
+      <a href="#capabilities">能力状态</a>
+    </section>
+    <section>
+      <p>功能与问法</p>
+      <a href="#knowledge">知识库问答</a>
+      <a href="#market">日线行情</a>
+      <a href="#quant">Quant 分析</a>
+      <a href="#financials">财报与基本面</a>
+      <a href="#threshold">历史阈值查询</a>
+    </section>
+    <section>
+      <p>使用边界</p>
+      <a href="#examples">常用问法</a>
+      <a href="#boundaries">暂未开放</a>
+      <a href="#troubleshooting">常见问题</a>
+    </section>
+    <div class="sidebar-note">
+      <strong>先看状态</strong>
+      <p><span class="dot live"></span>可用：已完成生产验证</p>
+      <p><span class="dot staged"></span>待开放：服务已安装，等待提示更新及生产聊天验收</p>
+      <p><span class="dot off"></span>未开放：不要换一种问法绕过</p>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="eyebrow"><span></span> SHSC FUND · AI KNOWLEDGE & DATA</div>
+      <h1>先说你想知道什么，<br><em>不用写 SQL。</em></h1>
+      <p class="hero-lead">这套系统既能回答公司知识库里的文档问题，也能读取已接通的公司数据库，完成单只沪深 A 股的行情、Quant、财报和基本面查询。选择正确入口，再用自然语言说清证券、时间和指标即可。</p>
+      <div class="mode-grid">
+        <article class="mode-card query-card">
+          <div class="mode-label"><span>01</span> 文档 / 制度 / 字段解释</div>
+          <h2>直接提问</h2>
+          <p>适合知识库文档、数据字典、制度、概念和业务说明。系统会检索文档并给出引用。</p>
+          <div class="prompt-line"><code>数据字典中 bar_daily 的 pre_close 是什么意思？</code><button class="copy-button" type="button">复制</button></div>
+        </article>
+        <article class="mode-card agent-card">
+          <div class="mode-label"><span>02</span> 数据库 / 计算任务</div>
+          <h2>使用 <code>@agent</code></h2>
+          <p>适合行情、CSV、Quant、财报和基本面。每个独立数据请求都以 <code>@agent</code> 开头。</p>
+          <div class="prompt-line"><code>@agent 帮我拉一下001258近三个月的日K，导出CSV。</code><button class="copy-button" type="button">复制</button></div>
+        </article>
+      </div>
+      <div class="status-banner">
+        <strong>当前说明</strong>
+        <p>日线、单证券 Quant、公司资料和基础财报已完成生产验证。扩展财报/基本面及免选模式的历史阈值 Skill 已安装，待工作区提示更新和生产聊天验收后再作为稳定入口使用。</p>
+      </div>
+    </section>
+
+    <section class="section" id="prompt-formula">
+      <div class="section-heading">
+        <span>01 · HOW TO ASK</span>
+        <h2>推荐提问公式</h2>
+        <p>日常使用不需要记工具名。把下面几项说清楚，系统会选择对应能力；已经明确的条件不必反复说明。</p>
+      </div>
+      <div class="formula" role="img" aria-label="提问由入口、证券、时间、任务和输出组成">
+        <div><small>入口</small><b>@agent</b></div><i>+</i>
+        <div><small>证券</small><b>001258 / 公司名</b></div><i>+</i>
+        <div><small>时间</small><b>近三个月 / 2025年报</b></div><i>+</i>
+        <div><small>任务</small><b>查日K / 分析Hurst</b></div><i>+</i>
+        <div><small>输出</small><b>表格 / CSV</b></div>
+      </div>
+      <div class="rules-grid">
+        <article><b>证券要明确</b><p>代码可写 <code>001258</code> 或 <code>001258.SZ</code>，也可写当前公司名。名称出现多个候选时按系统提示确认。</p></article>
+        <article><b>时间可用自然语言</b><p>日线、估值和 Quant 可说“近三个月”“近半年”“今年以来”“全历史”；明确日期可写起止日。</p></article>
+        <article><b>一次说一个主要任务</b><p>拉行情、跑 Quant、查财报是不同任务。复杂需求建议逐项提问，避免把多个数据口径混在一起。</p></article>
+        <article><b>系统答案保留源口径</b><p>空值保持未知，未查到记录不等于从未发生；不会为了好看擅自补零或换算单位。</p></article>
+      </div>
+    </section>
+
+    <section class="section tinted" id="capabilities">
+      <div class="section-heading">
+        <span>02 · CAPABILITY MAP</span>
+        <h2>能力状态一览</h2>
+        <p>“已安装”与“已完成生产聊天验收”是两件事。下面按页面发布时的实际状态标注。</p>
+      </div>
+      <div class="capability-table-wrap">
+        <table class="capability-table">
+          <thead><tr><th>能力</th><th>状态</th><th>当前可做</th><th>主要限制</th></tr></thead>
+          <tbody>
+            <tr><td><b>知识库问答</b></td><td><span class="badge live">可用</span></td><td>文档、制度、字段和数据字典解释，带引用</td><td>只依据已入库文档；无依据时会拒答</td></tr>
+            <tr><td><b>证券解析</b></td><td><span class="badge live">可用</span></td><td>当前沪深 A 股名称与代码解析</td><td>不猜历史名称；多候选需确认</td></tr>
+            <tr><td><b>日线行情</b></td><td><span class="badge live">可用</span></td><td>单证券日K、相对日期、库内全历史、CSV</td><td>日频、NONE 不复权；不含分钟/tick</td></tr>
+            <tr><td><b>Quant 文字分析</b></td><td><span class="badge live">可用</span></td><td>ADF/KPSS、Hurst、趋势/均值回归、偏度厚尾</td><td>单证券；无图表、配对、预测、回测</td></tr>
+            <tr><td><b>公司资料与基础财报</b></td><td><span class="badge live">可用</span></td><td>公司资料、最新/指定期/多期财报、单季度金额</td><td>当前源记录，不是历史 PIT</td></tr>
+            <tr><td><b>财报与基本面扩展</b></td><td><span class="badge staged">待开放</span></td><td>62项指标、预告快报、估值、股东基金、行业、权益事件</td><td>服务已安装；提示更新及生产聊天验收待完成</td></tr>
+            <tr><td><b>历史阈值查询</b></td><td><span class="badge staged">待开放</span></td><td>最低价相对交易所前收的涨跌阈值日期/数量与CSV</td><td>免选模式代码已安装；旧答案标签仍可能显示 research</td></tr>
+            <tr><td><b>研报 / 一致预期 / 超预期</b></td><td><span class="badge off">未开放</span></td><td>—</td><td>来源、权限和历史版本合同尚未接通</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section feature" id="knowledge">
+      <div class="feature-heading"><span class="feature-number">01</span><div><small>KNOWLEDGE BASE</small><h2>知识库问答</h2></div><span class="badge live">可用</span></div>
+      <div class="feature-layout">
+        <div>
+          <p class="feature-lead">问文档、制度、字段定义、数据库说明或财务概念时，直接提问即可，不用加 <code>@agent</code>。系统会从当前工作区的已入库资料中检索并引用来源。</p>
+          <h3>适合的问题</h3>
+          <ul class="check-list"><li>数据字典中某个字段是什么意思</li><li>某项制度或内部文档怎么规定</li><li>概念区别、计算口径和已有业务说明</li></ul>
+          <aside class="callout"><b>别这样问</b><p>不要把“查某只股票的实际数值”当作普通文档问答；这类请求要用 <code>@agent</code>。</p></aside>
+        </div>
+        <div class="prompt-stack">
+          <p>可直接复制</p>
+          <div class="prompt-line"><code>数据字典中 bar_daily 的 pre_close 是什么意思？</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>解释一下年初累计值和单季度值的区别。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>公司知识库里对财报 PIT 的定义是什么？请引用来源。</code><button class="copy-button" type="button">复制</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature tinted" id="market">
+      <div class="feature-heading"><span class="feature-number">02</span><div><small>MARKET DATA</small><h2>日线行情与 CSV</h2></div><span class="badge live">可用</span></div>
+      <div class="feature-layout">
+        <div>
+          <p class="feature-lead">查询单只沪深 A 股的日频不复权行情。可用自然语言时间，不再受 31 天限制，也可导出当前库内的全历史 CSV。</p>
+          <div class="spec-grid">
+            <div><small>频率</small><b>日频</b></div><div><small>复权</small><b>NONE</b></div>
+            <div><small>字段</small><b>OHLC + 前收 + 量额</b></div><div><small>上限</small><b>20,000 行</b></div>
+          </div>
+          <h3>支持字段</h3>
+          <p><code>open</code>、<code>high</code>、<code>low</code>、<code>close</code>、<code>pre_close</code>、<code>volume</code>、<code>amount</code>。省略字段时默认全部返回。</p>
+          <aside class="callout"><b>口径提醒</b><p><code>pre_close</code> 是交易所当日前收基准，除权除息时不一定等于上一日裸收盘。没有记录不等于停牌或零成交。</p></aside>
+        </div>
+        <div class="prompt-stack">
+          <p>可直接复制</p>
+          <div class="prompt-line"><code>@agent 帮我拉一下001258近三个月的日K，导出CSV。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 查询000001.SZ在2026-09-01至2026-09-03的开高低收、成交量和成交额。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 导出001258在公司库里的全历史日线CSV。</code><button class="copy-button" type="button">复制</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature" id="quant">
+      <div class="feature-heading"><span class="feature-number">03</span><div><small>QUANT ANALYSIS</small><h2>单证券 Quant 文字分析</h2></div><span class="badge live">可用</span></div>
+      <div class="feature-layout">
+        <div>
+          <p class="feature-lead">对单只股票的日频未复权收盘序列做固定诊断，默认近一年。报告用于描述时序特征，不是收益预测或买卖信号。</p>
+          <div class="metric-cloud"><span>ADF</span><span>KPSS</span><span>Hurst</span><span>趋势 / 均值回归</span><span>偏度</span><span>厚尾</span><span>分布诊断</span></div>
+          <p>需要 30–20,000 条有效记录。ADF/KPSS/Hurst 会使用固定尾部窗口，窗口不是“已核实交易日数”。</p>
+          <aside class="callout warning"><b>当前不做</b><p>图表、双证券配对、协整、预测、选股排名和回测均未开放。</p></aside>
+        </div>
+        <div class="prompt-stack">
+          <p>可直接复制</p>
+          <div class="prompt-line"><code>@agent 分析001258近一年的平稳性、Hurst和分布特征。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 分析000001.SZ近半年的趋势和均值回归性质。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 同一只股票，把分析范围改成近三个月。</code><button class="copy-button" type="button">复制</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature tinted" id="financials">
+      <div class="feature-heading"><span class="feature-number">04</span><div><small>FINANCIALS & FUNDAMENTALS</small><h2>财报与基本面</h2></div><span class="badge staged">部分待开放</span></div>
+      <p class="feature-lead wide">基础公司资料和财报已经可用；扩展指标、预告快报、估值、股东基金、行业及权益事件的服务已安装，待工作区提示更新和生产聊天验收后作为稳定入口开放。</p>
+      <div class="cap-card-grid">
+        <article><span class="badge live">可用</span><h3>公司资料</h3><p>行业、地区、板块、上市日期、实控人等当前资料。</p><code>@agent 查一下001258的行业、地区、上市日期和实控人。</code></article>
+        <article><span class="badge live">可用</span><h3>正式财报</h3><p>最新、指定报告期、最多8期并列；累计金额可明确要求单季度差额。</p><code>@agent 比较001258的2024年报和2025年报营业收入。</code></article>
+        <article><span class="badge staged">待开放</span><h3>62项财报指标</h3><p>收入利润、成本费用、投资收益、EBIT/EBITDA、资产负债、现金流、ROIC及周转率等。</p><code>@agent 查001258最新财报的研发费用、商誉和ROIC。</code></article>
+        <article><span class="badge staged">待开放</span><h3>预告与快报</h3><p>业绩预告保留区间、公告日和原因；快报不是正式财报，也不是一致预期。</p><code>@agent 看看001258最新业绩预告。</code></article>
+        <article><span class="badge staged">待开放</span><h3>估值与股本</h3><p>PE、PE_TTM、PB、PS、股息率、市值、股本、换手率和量比等15项。</p><code>@agent 查001258最新的PE_TTM、PB和总市值。</code></article>
+        <article><span class="badge staged">待开放</span><h3>股东与基金</h3><p>单期十大及流通股东、公募基金聚合和机构持仓画像。</p><code>@agent 看看001258最新一期的十大股东。</code></article>
+        <article><span class="badge staged">待开放</span><h3>当前行业</h3><p>当前申万一级行业快照；不会把当前行业倒填到历史日期。</p><code>@agent 001258当前属于哪个申万一级行业？</code></article>
+        <article><span class="badge staged">待开放</span><h3>权益事件</h3><p>源库已发布的分红、送转、配股等动作，保留阶段、条件和业务日期。</p><code>@agent 查001258的分红送转权益事件。</code></article>
+      </div>
+      <div class="two-column-notes">
+        <article><h3>单季度怎么问</h3><p>只对同年度、同主体、同报表范围和一致修订口径的可加金额做差。Q1直接取累计值。</p><div class="prompt-line"><code>@agent 查001258在2026年第二季度单季度营业收入。</code><button class="copy-button" type="button">复制</button></div></article>
+        <article><h3>哪些不能相减</h3><p>EPS、ROE、毛利率等比率，以及总资产、商誉等期末余额不能用相邻季度累计值做差。年初累计值也不保证随时间单调增大。</p></article>
+      </div>
+    </section>
+
+    <section class="section feature" id="threshold">
+      <div class="feature-heading"><span class="feature-number">05</span><div><small>FULL-HISTORY THRESHOLD</small><h2>历史阈值查询</h2></div><span class="badge staged">待开放</span></div>
+      <div class="feature-layout">
+        <div>
+          <p class="feature-lead">用于查“盘中最低价相对交易所当日前收上涨或下跌达到某个百分数”的日期或数量。它不是通用行情筛选器。</p>
+          <div class="formula compact"><div><small>固定公式</small><b>low / pre_close − 1</b></div><i>→</i><div><small>阈值</small><b>至少 / 严格超过</b></div><i>→</i><div><small>结果</small><b>日期 / 数量 / CSV</b></div></div>
+          <aside class="callout"><b>准确使用</b><p>7% 就写 7%。问收盘价、最高价、成交量、指数、基金或复权收益时，不会套用这个 Skill。</p></aside>
+        </div>
+        <div class="prompt-stack">
+          <p>提示更新后可这样问</p>
+          <div class="prompt-line"><code>@agent 查询000001.SZ全历史盘中最低价相对前收下跌至少7%的日期。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 查询001258在2025-01-01至2025-12-31最低价相对前收上涨严格超过5%的次数。</code><button class="copy-button" type="button">复制</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="examples">
+      <div class="section-heading">
+        <span>03 · COPY & ASK</span>
+        <h2>常用问法速查</h2>
+        <p>先复制最接近的句子，再替换证券、时间或指标。不要写 SQL、工具名、表名或 JSON。</p>
+      </div>
+      <div class="example-grid">
+        <div class="prompt-line"><code>@agent 帮我拉一下001258近三个月的日K，导出CSV。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 分析001258近一年的平稳性和Hurst。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 查001258最新财报的营业收入、归母净利润和经营现金流。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 比较001258的2024年报和2025年报营业收入。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line staged-example"><code>@agent 查001258最新的PE_TTM、PB和总市值。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line staged-example"><code>@agent 看看001258最新一期的十大股东。</code><button class="copy-button" type="button">复制</button></div>
+      </div>
+      <p class="example-note"><span class="dot staged"></span>浅蓝虚线示例属于已安装、待提示更新和生产聊天验收的能力。</p>
+    </section>
+
+    <section class="section" id="boundaries">
+      <div class="section-heading">
+        <span>04 · BOUNDARIES</span>
+        <h2>当前不要期待什么</h2>
+        <p>系统会明确说明能力边界。无法完成时，不会用网页搜索、模型记忆或其他数据库路径偷偷补数。</p>
+      </div>
+      <div class="boundary-grid">
+        <article><span>暂未开放</span><h3>Quant 图表与K线图</h3><p>当前 Quant 只返回文字报告；候选图表代码不代表生产可用。</p></article>
+        <article><span>暂未开放</span><h3>双证券、协整与配对</h3><p>不比较两只证券的协整关系，也不生成配对交易结论。</p></article>
+        <article><span>暂未开放</span><h3>选股、排名与推荐</h3><p>不能回答“推荐5只最亮眼股票”，也不承诺收益或给出买卖建议。</p></article>
+        <article><span>暂未开放</span><h3>回测与收益预测</h3><p>不做策略回测、未来价格预测或复权总回报计算。</p></article>
+        <article><span>暂未开放</span><h3>内部研报专用检索</h3><p>来源与权限接口尚未接通；普通知识库中已有文档仍可按RAG检索。</p></article>
+        <article><span>暂未开放</span><h3>一致预期与超预期</h3><p>缺少可信历史版本和公告前可得时间时，不会用预告或模型知识替代。</p></article>
+        <article><span>暂未开放</span><h3>历史财报 PIT</h3><p>当前财报是来源最新记录，不回答“截至过去某日当时已知的版本”。</p></article>
+        <article><span>暂未开放</span><h3>前后复权与其他资产</h3><p>行情和 Quant 当前只支持沪深 A 股日频 NONE 口径，不含指数、基金、分钟和 tick。</p></article>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="troubleshooting">
+      <div class="section-heading">
+        <span>05 · TROUBLESHOOTING</span>
+        <h2>常见问题</h2>
+      </div>
+      <div class="faq-list">
+        <details open><summary>为什么它说没有相关文档，或者没有调用数据库？</summary><p>生产工作区默认是 Query 文档问答模式。数据库和计算任务需要以 <code>@agent</code> 开头，或点击输入框旁的 Start Agent Session。单凭模型一句“未挂载 Skill”不能判定服务故障。</p></details>
+        <details><summary>为什么返回“未查到记录”？</summary><p>未查到只代表本次条件下没有可展示记录，不等于停牌、零成交、从未发生或源数据不存在。先检查证券、时间和报告期是否正确。</p></details>
+        <details><summary>为什么数值没有换成亿元或百分比？</summary><p>财报和部分指标按源原值返回。单位或缩放没有完成认证时，系统不会自行换算；空值也不会补成0。</p></details>
+        <details><summary>为什么 CSV 点下载没有反应？</summary><p>如果内置浏览器提示下载停止，请使用电脑上的 Chrome 或 Safari 打开同一结果页再下载。此前服务器生成与外部浏览器保存链路已验证。</p></details>
+        <details><summary>健康检查显示“未就绪”是否代表服务坏了？</summary><p>健康状态记录当前 Gateway 进程实际读通过哪些能力。刚启动且尚未执行取数时可能显示未就绪；配置启用、当前进程读通和历史完整性是不同事实。</p></details>
+        <details><summary>可以把账号、密码或数据库连接发给智能体吗？</summary><p>不可以。不要在聊天中发送数据库凭据、Token、私钥或连接串，也不要要求系统生成带真实凭据的可运行代码。</p></details>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>尚宸智能体知识库</strong><span>功能与使用方式指南</span></div>
+      <p>页面状态更新于 2026-09-17。能力以生产工作区实际验收状态为准；本系统提供数据查询与分析，不构成投资建议。</p>
+    </footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
