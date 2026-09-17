@@ -19,7 +19,6 @@
       <a href="#start">开始使用</a>
       <a href="#capabilities">能力总览</a>
       <a href="#examples">提问示例</a>
-      <a href="#boundaries">能力边界</a>
     </nav>
     <button class="menu-button" type="button" aria-label="打开章节目录" aria-expanded="false">目录</button>
   </header>
@@ -44,9 +43,8 @@
       <a href="#threshold">历史阈值查询</a>
     </section>
     <section>
-      <p>使用边界</p>
+      <p>使用帮助</p>
       <a href="#examples">常用问法</a>
-      <a href="#boundaries">暂未开放</a>
       <a href="#troubleshooting">常见问题</a>
     </section>
     <div class="sidebar-note">
@@ -60,7 +58,7 @@
   <main>
     <section class="hero" id="start">
       <div class="eyebrow"><span></span> SHSC FUND · AI KNOWLEDGE & DATA</div>
-      <h1>先说你想知道什么，<br><em>不用写 SQL。</em></h1>
+      <h1>尚宸智能体知识库<br><em>用户指南</em></h1>
       <p class="hero-lead">这套系统既能回答公司知识库里的文档问题，也能读取已接通的公司数据库，完成单只沪深 A 股的行情、Quant、财报和基本面查询。选择正确入口，再用自然语言说清证券、时间和指标即可。</p>
       <div class="mode-grid">
         <article class="mode-card query-card">
@@ -236,36 +234,16 @@
       <p class="example-note"><span class="dot staged"></span>浅蓝虚线示例属于已安装、待提示更新和生产聊天验收的能力。</p>
     </section>
 
-    <section class="section" id="boundaries">
-      <div class="section-heading">
-        <span>04 · BOUNDARIES</span>
-        <h2>当前不要期待什么</h2>
-        <p>系统会明确说明能力边界。无法完成时，不会用网页搜索、模型记忆或其他数据库路径偷偷补数。</p>
-      </div>
-      <div class="boundary-grid">
-        <article><span>暂未开放</span><h3>Quant 图表与K线图</h3><p>当前 Quant 只返回文字报告；候选图表代码不代表生产可用。</p></article>
-        <article><span>暂未开放</span><h3>双证券、协整与配对</h3><p>不比较两只证券的协整关系，也不生成配对交易结论。</p></article>
-        <article><span>暂未开放</span><h3>选股、排名与推荐</h3><p>不能回答“推荐5只最亮眼股票”，也不承诺收益或给出买卖建议。</p></article>
-        <article><span>暂未开放</span><h3>回测与收益预测</h3><p>不做策略回测、未来价格预测或复权总回报计算。</p></article>
-        <article><span>暂未开放</span><h3>内部研报专用检索</h3><p>来源与权限接口尚未接通；普通知识库中已有文档仍可按RAG检索。</p></article>
-        <article><span>暂未开放</span><h3>一致预期与超预期</h3><p>缺少可信历史版本和公告前可得时间时，不会用预告或模型知识替代。</p></article>
-        <article><span>暂未开放</span><h3>历史财报 PIT</h3><p>当前财报是来源最新记录，不回答“截至过去某日当时已知的版本”。</p></article>
-        <article><span>暂未开放</span><h3>前后复权与其他资产</h3><p>行情和 Quant 当前只支持沪深 A 股日频 NONE 口径，不含指数、基金、分钟和 tick。</p></article>
-      </div>
-    </section>
-
     <section class="section faq-section" id="troubleshooting">
       <div class="section-heading">
-        <span>05 · TROUBLESHOOTING</span>
+        <span>04 · TROUBLESHOOTING</span>
         <h2>常见问题</h2>
       </div>
       <div class="faq-list">
         <details open><summary>为什么它说没有相关文档，或者没有调用数据库？</summary><p>生产工作区默认是 Query 文档问答模式。数据库和计算任务需要以 <code>@agent</code> 开头，或点击输入框旁的 Start Agent Session。单凭模型一句“未挂载 Skill”不能判定服务故障。</p></details>
         <details><summary>为什么返回“未查到记录”？</summary><p>未查到只代表本次条件下没有可展示记录，不等于停牌、零成交、从未发生或源数据不存在。先检查证券、时间和报告期是否正确。</p></details>
         <details><summary>为什么数值没有换成亿元或百分比？</summary><p>财报和部分指标按源原值返回。单位或缩放没有完成认证时，系统不会自行换算；空值也不会补成0。</p></details>
-        <details><summary>为什么 CSV 点下载没有反应？</summary><p>如果内置浏览器提示下载停止，请使用电脑上的 Chrome 或 Safari 打开同一结果页再下载。此前服务器生成与外部浏览器保存链路已验证。</p></details>
         <details><summary>健康检查显示“未就绪”是否代表服务坏了？</summary><p>健康状态记录当前 Gateway 进程实际读通过哪些能力。刚启动且尚未执行取数时可能显示未就绪；配置启用、当前进程读通和历史完整性是不同事实。</p></details>
-        <details><summary>可以把账号、密码或数据库连接发给智能体吗？</summary><p>不可以。不要在聊天中发送数据库凭据、Token、私钥或连接串，也不要要求系统生成带真实凭据的可运行代码。</p></details>
       </div>
     </section>
 
