@@ -26,7 +26,7 @@
   <aside class="sidebar" aria-label="章节目录">
     <div class="sidebar-intro">
       <strong>使用手册</strong>
-      <span>面向公司同事 · 2026-09-17</span>
+      <span>面向公司同事 · 2026-09-18</span>
     </div>
     <section>
       <p>快速开始</p>
@@ -50,7 +50,6 @@
     <div class="sidebar-note">
       <strong>先看状态</strong>
       <p><span class="dot live"></span>可用：已完成生产验证</p>
-      <p><span class="dot staged"></span>待开放：服务已安装，等待提示更新及生产聊天验收</p>
       <p><span class="dot off"></span>未开放：不要换一种问法绕过</p>
     </div>
   </aside>
@@ -76,7 +75,7 @@
       </div>
       <div class="status-banner">
         <strong>当前说明</strong>
-        <p>日线、单证券 Quant、公司资料和基础财报已完成生产验证。扩展财报/基本面及免选模式的历史阈值 Skill 已安装，待工作区提示更新和生产聊天验收后再作为稳定入口使用。</p>
+        <p>日线与 CSV、单证券 Quant 文字和图表、完整财报与基本面、历史阈值查询均已完成生产验证。直接描述目标即可，不需要选择“研究模式”或“严格模式”。</p>
       </div>
     </section>
 
@@ -105,7 +104,7 @@
       <div class="section-heading">
         <span>02 · CAPABILITY MAP</span>
         <h2>能力状态一览</h2>
-        <p>“已安装”与“已完成生产聊天验收”是两件事。下面按页面发布时的实际状态标注。</p>
+        <p>下面按生产工作区已经完成的真实聊天验收标注；未开放能力不会用抽样或替代算法冒充。</p>
       </div>
       <div class="capability-table-wrap">
         <table class="capability-table">
@@ -114,10 +113,9 @@
             <tr><td><b>知识库问答</b></td><td><span class="badge live">可用</span></td><td>文档、制度、字段和数据字典解释，带引用</td><td>只依据已入库文档；无依据时会拒答</td></tr>
             <tr><td><b>证券解析</b></td><td><span class="badge live">可用</span></td><td>当前沪深 A 股名称与代码解析</td><td>不猜历史名称；多候选需确认</td></tr>
             <tr><td><b>日线行情</b></td><td><span class="badge live">可用</span></td><td>单证券日K、相对日期、库内全历史、CSV</td><td>日频、NONE 不复权；不含分钟/tick</td></tr>
-            <tr><td><b>Quant 文字分析</b></td><td><span class="badge live">可用</span></td><td>ADF/KPSS、Hurst、趋势/均值回归、偏度厚尾</td><td>单证券；无图表、配对、预测、回测</td></tr>
-            <tr><td><b>公司资料与基础财报</b></td><td><span class="badge live">可用</span></td><td>公司资料、最新/指定期/多期财报、单季度金额</td><td>当前源记录，不是历史 PIT</td></tr>
-            <tr><td><b>财报与基本面扩展</b></td><td><span class="badge staged">待开放</span></td><td>62项指标、预告快报、估值、股东基金、行业、权益事件</td><td>服务已安装；提示更新及生产聊天验收待完成</td></tr>
-            <tr><td><b>历史阈值查询</b></td><td><span class="badge staged">待开放</span></td><td>最低价相对交易所前收的涨跌阈值日期/数量与CSV</td><td>免选模式代码已安装；旧答案标签仍可能显示 research</td></tr>
+            <tr><td><b>Quant 分析与图表</b></td><td><span class="badge live">可用</span></td><td>ADF/KPSS、Hurst、趋势/均值回归、偏度厚尾、三联 PNG 图</td><td>单证券；暂不含配对、预测、排名和回测</td></tr>
+            <tr><td><b>财报与基本面</b></td><td><span class="badge live">可用</span></td><td>完整财报指标、预告快报、估值、股东基金、行业、权益事件</td><td>当前源记录；历史 PIT 需单独能力</td></tr>
+            <tr><td><b>历史阈值查询</b></td><td><span class="badge live">可用</span></td><td>最低价相对交易所前收的涨跌阈值日期/数量与CSV</td><td>固定公式和日频 NONE 口径，不是通用筛选器</td></tr>
             <tr><td><b>研报 / 一致预期 / 超预期</b></td><td><span class="badge off">未开放</span></td><td>—</td><td>来源、权限和历史版本合同尚未接通</td></tr>
           </tbody>
         </table>
@@ -165,35 +163,36 @@
     </section>
 
     <section class="section feature" id="quant">
-      <div class="feature-heading"><span class="feature-number">03</span><div><small>QUANT ANALYSIS</small><h2>单证券 Quant 文字分析</h2></div><span class="badge live">可用</span></div>
+      <div class="feature-heading"><span class="feature-number">03</span><div><small>QUANT ANALYSIS</small><h2>单证券 Quant 分析与图表</h2></div><span class="badge live">可用</span></div>
       <div class="feature-layout">
         <div>
-          <p class="feature-lead">对单只股票的日频未复权收盘序列做固定诊断，默认近一年。报告用于描述时序特征，不是收益预测或买卖信号。</p>
+          <p class="feature-lead">对单只股票的日频未复权收盘序列做固定诊断，默认近一年。明确说“画图”时会同时生成可预览、可下载的三联 PNG；报告用于描述时序特征，不是收益预测或买卖信号。</p>
           <div class="metric-cloud"><span>ADF</span><span>KPSS</span><span>Hurst</span><span>趋势 / 均值回归</span><span>偏度</span><span>厚尾</span><span>分布诊断</span></div>
           <p>需要 30–20,000 条有效记录。ADF/KPSS/Hurst 会使用固定尾部窗口，窗口不是“已核实交易日数”。</p>
-          <aside class="callout warning"><b>当前不做</b><p>图表、双证券配对、协整、预测、选股排名和回测均未开放。</p></aside>
+          <aside class="callout"><b>图表口径</b><p>当前图表固定为收盘价走势、标准化对数差分 KDE 和 QQ 图，不是 OHLC 蜡烛 K 线。双证券配对、协整、预测、选股排名和回测尚未开放。</p></aside>
         </div>
         <div class="prompt-stack">
           <p>可直接复制</p>
           <div class="prompt-line"><code>@agent 分析001258近一年的平稳性、Hurst和分布特征。</code><button class="copy-button" type="button">复制</button></div>
           <div class="prompt-line"><code>@agent 分析000001.SZ近半年的趋势和均值回归性质。</code><button class="copy-button" type="button">复制</button></div>
+          <div class="prompt-line"><code>@agent 画一下001258近一年的走势、KDE分布和QQ图。</code><button class="copy-button" type="button">复制</button></div>
           <div class="prompt-line"><code>@agent 同一只股票，把分析范围改成近三个月。</code><button class="copy-button" type="button">复制</button></div>
         </div>
       </div>
     </section>
 
     <section class="section feature tinted" id="financials">
-      <div class="feature-heading"><span class="feature-number">04</span><div><small>FINANCIALS & FUNDAMENTALS</small><h2>财报与基本面</h2></div><span class="badge staged">部分待开放</span></div>
-      <p class="feature-lead wide">基础公司资料和财报已经可用；扩展指标、预告快报、估值、股东基金、行业及权益事件的服务已安装，待工作区提示更新和生产聊天验收后作为稳定入口开放。</p>
+      <div class="feature-heading"><span class="feature-number">04</span><div><small>FINANCIALS & FUNDAMENTALS</small><h2>财报与基本面</h2></div><span class="badge live">可用</span></div>
+      <p class="feature-lead wide">公司资料、完整财报指标、预告快报、估值、股东与基金持仓、行业及权益事件均可直接查询。答案保留证券、报告期、公告日、来源和已核实口径。</p>
       <div class="cap-card-grid">
         <article><span class="badge live">可用</span><h3>公司资料</h3><p>行业、地区、板块、上市日期、实控人等当前资料。</p><code>@agent 查一下001258的行业、地区、上市日期和实控人。</code></article>
         <article><span class="badge live">可用</span><h3>正式财报</h3><p>最新、指定报告期、最多8期并列；累计金额可明确要求单季度差额。</p><code>@agent 比较001258的2024年报和2025年报营业收入。</code></article>
-        <article><span class="badge staged">待开放</span><h3>62项财报指标</h3><p>收入利润、成本费用、投资收益、EBIT/EBITDA、资产负债、现金流、ROIC及周转率等。</p><code>@agent 查001258最新财报的研发费用、商誉和ROIC。</code></article>
-        <article><span class="badge staged">待开放</span><h3>预告与快报</h3><p>业绩预告保留区间、公告日和原因；快报不是正式财报，也不是一致预期。</p><code>@agent 看看001258最新业绩预告。</code></article>
-        <article><span class="badge staged">待开放</span><h3>估值与股本</h3><p>PE、PE_TTM、PB、PS、股息率、市值、股本、换手率和量比等15项。</p><code>@agent 查001258最新的PE_TTM、PB和总市值。</code></article>
-        <article><span class="badge staged">待开放</span><h3>股东与基金</h3><p>单期十大及流通股东、公募基金聚合和机构持仓画像。</p><code>@agent 看看001258最新一期的十大股东。</code></article>
-        <article><span class="badge staged">待开放</span><h3>当前行业</h3><p>当前申万一级行业快照；不会把当前行业倒填到历史日期。</p><code>@agent 001258当前属于哪个申万一级行业？</code></article>
-        <article><span class="badge staged">待开放</span><h3>权益事件</h3><p>源库已发布的分红、送转、配股等动作，保留阶段、条件和业务日期。</p><code>@agent 查001258的分红送转权益事件。</code></article>
+        <article><span class="badge live">可用</span><h3>62项财报指标</h3><p>收入利润、成本费用、投资收益、EBIT/EBITDA、资产负债、现金流、ROIC及周转率等。</p><code>@agent 查001258最新财报的研发费用、商誉和ROIC。</code></article>
+        <article><span class="badge live">可用</span><h3>预告与快报</h3><p>业绩预告保留区间、公告日和原因；快报不是正式财报，也不是一致预期。</p><code>@agent 看看001258最新业绩预告。</code></article>
+        <article><span class="badge live">可用</span><h3>估值与股本</h3><p>PE、PE_TTM、PB、PS、股息率、市值、股本、换手率和量比等15项。</p><code>@agent 查001258最新的PE_TTM、PB和总市值。</code></article>
+        <article><span class="badge live">可用</span><h3>股东与基金</h3><p>单期十大及流通股东、公募基金聚合和机构持仓画像。</p><code>@agent 看看001258最新一期的十大股东。</code></article>
+        <article><span class="badge live">可用</span><h3>当前行业</h3><p>当前申万一级行业快照；不会把当前行业倒填到历史日期。</p><code>@agent 001258当前属于哪个申万一级行业？</code></article>
+        <article><span class="badge live">可用</span><h3>权益事件</h3><p>源库已发布的分红、送转、配股等动作，保留阶段、条件和业务日期。</p><code>@agent 查001258的分红送转权益事件。</code></article>
       </div>
       <div class="two-column-notes">
         <article><h3>单季度怎么问</h3><p>只对同年度、同主体、同报表范围和一致修订口径的可加金额做差。Q1直接取累计值。</p><div class="prompt-line"><code>@agent 查001258在2026年第二季度单季度营业收入。</code><button class="copy-button" type="button">复制</button></div></article>
@@ -202,7 +201,7 @@
     </section>
 
     <section class="section feature" id="threshold">
-      <div class="feature-heading"><span class="feature-number">05</span><div><small>FULL-HISTORY THRESHOLD</small><h2>历史阈值查询</h2></div><span class="badge staged">待开放</span></div>
+      <div class="feature-heading"><span class="feature-number">05</span><div><small>FULL-HISTORY THRESHOLD</small><h2>历史阈值查询</h2></div><span class="badge live">可用</span></div>
       <div class="feature-layout">
         <div>
           <p class="feature-lead">用于查“盘中最低价相对交易所当日前收上涨或下跌达到某个百分数”的日期或数量。它不是通用行情筛选器。</p>
@@ -210,7 +209,7 @@
           <aside class="callout"><b>准确使用</b><p>7% 就写 7%。问收盘价、最高价、成交量、指数、基金或复权收益时，不会套用这个 Skill。</p></aside>
         </div>
         <div class="prompt-stack">
-          <p>提示更新后可这样问</p>
+          <p>可直接复制</p>
           <div class="prompt-line"><code>@agent 查询000001.SZ全历史盘中最低价相对前收下跌至少7%的日期。</code><button class="copy-button" type="button">复制</button></div>
           <div class="prompt-line"><code>@agent 查询001258在2025-01-01至2025-12-31最低价相对前收上涨严格超过5%的次数。</code><button class="copy-button" type="button">复制</button></div>
         </div>
@@ -228,10 +227,11 @@
         <div class="prompt-line"><code>@agent 分析001258近一年的平稳性和Hurst。</code><button class="copy-button" type="button">复制</button></div>
         <div class="prompt-line"><code>@agent 查001258最新财报的营业收入、归母净利润和经营现金流。</code><button class="copy-button" type="button">复制</button></div>
         <div class="prompt-line"><code>@agent 比较001258的2024年报和2025年报营业收入。</code><button class="copy-button" type="button">复制</button></div>
-        <div class="prompt-line staged-example"><code>@agent 查001258最新的PE_TTM、PB和总市值。</code><button class="copy-button" type="button">复制</button></div>
-        <div class="prompt-line staged-example"><code>@agent 看看001258最新一期的十大股东。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 查001258最新的PE_TTM、PB和总市值。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 看看001258最新一期的十大股东。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 画一下001258近一年的走势和分布图。</code><button class="copy-button" type="button">复制</button></div>
+        <div class="prompt-line"><code>@agent 查001258全历史最低价相对前收下跌至少7%的日期。</code><button class="copy-button" type="button">复制</button></div>
       </div>
-      <p class="example-note"><span class="dot staged"></span>浅蓝虚线示例属于已安装、待提示更新和生产聊天验收的能力。</p>
     </section>
 
     <section class="section faq-section" id="troubleshooting">
@@ -249,7 +249,7 @@
 
     <footer>
       <div><strong>尚宸智能体知识库</strong><span>功能与使用方式指南</span></div>
-      <p>页面状态更新于 2026-09-17。能力以生产工作区实际验收状态为准；本系统提供数据查询与分析，不构成投资建议。</p>
+      <p>页面状态更新于 2026-09-18。能力以生产工作区实际验收状态为准；本系统提供数据查询与分析，不构成投资建议。</p>
     </footer>
   </main>
   <script src="app.js" defer></script>
